@@ -5,7 +5,7 @@
             <div class="div-col-6 left">
                 <div class="logo">
                     <a href="/">
-                        <img src="https://xiaofei-mall.oss-cn-beijing.aliyuncs.com/2021-08-15/logo.png" alt="图片加载失败">
+                        <img src="https://xiaofei-mall.oss-cn-beijing.aliyuncs.com/2021-12-24/logo.png" alt="图片加载失败">
                     </a>
                 </div>
             </div>

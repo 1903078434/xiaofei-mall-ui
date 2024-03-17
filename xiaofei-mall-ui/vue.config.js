@@ -42,7 +42,7 @@ module.exports = {
             [process.env.VUE_APP_BASE_API]: {
                 //目标服务器，比如：请求地址为`/product/category/list`，最后请求地址为：【target的值+/product/category/list】
                 target: `http://localhost:8888`,
-                changeOrigin: true,
+                                changeOrigin: true,
                 pathRewrite: {
                     ['^' + process.env.VUE_APP_BASE_API]: ''
                 }

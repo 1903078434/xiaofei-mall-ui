@@ -4,8 +4,8 @@
             <div class="xiaofei-row xiaofei-center aaa">
                 <div class="left xiaofei-col-6">
                     <a href="/">
-                        <el-image src="https://xiaofei-mall.oss-cn-beijing.aliyuncs.com/2021-08-15/logo.png"
-                                  lazy fit="contain" style="width: 181px;height: 100%;margin-top: 9px"/>
+                        <el-image src="https://xiaofei-mall.oss-cn-beijing.aliyuncs.com/2021-12-24/logo.png"
+                                  lazy fit="contain" style="width: 75px; height: 75px"/>
                     </a>
                 </div>
                 <div class="right xiaofei-col-6">

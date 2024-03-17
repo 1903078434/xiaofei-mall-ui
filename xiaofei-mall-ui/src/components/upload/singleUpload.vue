@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-upload
-            action="http://xiaofei-mall.oss-cn-beijing.aliyuncs.com"
+            action="https://image.nastt.fun"
             :data="dataObj"
             list-type="picture"
             :multiple="false" :show-file-list="showFileList"
