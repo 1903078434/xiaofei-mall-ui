@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryForm" size="small" inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="字典名称" prop="dictType">
-        <el-select v-model="queryParams.dictType" size="small">
+        <el-select v-model="queryParams.dictType">
           <el-option
             v-for="item in typeOptions"
             :key="item.dictId"
@@ -16,12 +16,11 @@
           v-model="queryParams.dictLabel"
           placeholder="请输入字典标签"
           clearable
-          size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="数据状态" clearable size="small">
+        <el-select v-model="queryParams.status" placeholder="数据状态" clearable>
           <el-option
             v-for="dict in dict.type.sys_normal_disable"
             :key="dict.value"
@@ -78,6 +77,15 @@
           @click="handleExport"
           v-hasPermi="['system:dict:export']"
         >导出</el-button>
+      </el-col>
+      <el-col :span="1.5">
+        <el-button
+          type="warning"
+          plain
+          icon="el-icon-close"
+          size="mini"
+          @click="handleClose"
+        >关闭</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
@@ -315,6 +323,11 @@ export default {
     handleQuery() {
       this.queryParams.pageNum = 1;
       this.getList();
+    },
+    /** 返回按钮操作 */
+    handleClose() {
+      const obj = { path: "/system/dict" };
+      this.$tab.closeOpenPage(obj);
     },
     /** 重置按钮操作 */
     resetQuery() {

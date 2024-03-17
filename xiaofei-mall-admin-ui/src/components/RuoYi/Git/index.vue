@@ -1,6 +1,6 @@
 <template>
   <div>
-    <svg-icon icon-class="github" @click="goto"/>
+    <svg-icon icon-class="github" @click="goto" />
   </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
   name: 'RuoYiGit',
   data() {
     return {
-      url: 'https://gitee.com/Li_Fei_git/xiaofei-mall-ui/tree/master/xiaofei-mall-admin-ui'
+      url: 'https://gitee.com/Li_Fei_git/xiaofei-mall-ui'
     }
   },
   methods: {

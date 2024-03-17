@@ -1,15 +1,15 @@
 <template>
   <div>
-    <svg-icon icon-class="question" @click="goto"/>
+    <svg-icon icon-class="question" @click="goto" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'RuoYiDoc',
+  name: 'MallDoc',
   data() {
     return {
-      url: 'https://gitee.com/Li_Fei_git/xiaofei-mall-ui/tree/master/xiaofei-mall-admin-ui'
+      url: 'https://gitee.com/Li_Fei_git/xiaofei-mall-ui'
     }
   },
   methods: {

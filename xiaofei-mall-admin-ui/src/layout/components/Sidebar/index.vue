@@ -7,7 +7,7 @@
                 :collapse="isCollapse"
                 :background-color="settings.sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground"
                 :text-color="settings.sideTheme === 'theme-dark' ? variables.menuColor : variables.menuLightColor"
-                :unique-opened="false"
+                :unique-opened="true"
                 :active-text-color="settings.theme"
                 :collapse-transition="false"
                 mode="vertical"

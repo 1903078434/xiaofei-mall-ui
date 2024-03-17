@@ -1,13 +1,12 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryForm" size="small" inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="登录地址" prop="ipaddr">
         <el-input
           v-model="queryParams.ipaddr"
           placeholder="请输入登录地址"
           clearable
           style="width: 240px;"
-          size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
@@ -17,7 +16,6 @@
           placeholder="请输入用户名称"
           clearable
           style="width: 240px;"
-          size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
@@ -26,7 +24,6 @@
           v-model="queryParams.status"
           placeholder="登录状态"
           clearable
-          size="small"
           style="width: 240px"
         >
           <el-option
@@ -40,7 +37,6 @@
       <el-form-item label="登录时间">
         <el-date-picker
           v-model="dateRange"
-          size="small"
           style="width: 240px"
           value-format="yyyy-MM-dd"
           type="daterange"

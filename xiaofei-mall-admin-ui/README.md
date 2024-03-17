@@ -1,5 +1,11 @@
 ## 开发
 
+```bash
+# 克隆项目
+git clone https://gitee.com/Li_Fei_git/xiaofei-mall-ui
+
+# 进入项目目录
+cd xiaofei-mall-admin-ui
 
 # 安装依赖
 npm install
