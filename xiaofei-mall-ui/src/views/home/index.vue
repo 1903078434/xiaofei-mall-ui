@@ -165,7 +165,7 @@
                             <div class="left">
                                 <img v-if="userInfo.id>0" :src="userInfo.header"
                                      alt="加载失败">
-                                <img v-else src="https://img1.baidu.com/it/u=504609824,3604971623&fm=26&fmt=auto&gp=0.jpg"
+                                <img v-else src="https://xiaofei-mall.oss-cn-beijing.aliyuncs.com/2021-12-22/b21098431964-43a1-8326-d7b2ef6d3d6e"
                                      alt="加载失败">
                             </div>
                             <div class="right" v-if="userInfo.id>0">Hi~{{ userInfo.username }}</div>

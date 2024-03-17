@@ -1,5 +1,6 @@
 <template>
-  <div :class="className" :style="{height:height,width:width}" />
+    <div :class="className" :style="{ height: height, width: width }" />
+
 </template>
 
 <script>
@@ -8,128 +9,134 @@ require('echarts/theme/macarons') // echarts theme
 import resize from './mixins/resize'
 
 export default {
-  mixins: [resize],
-  props: {
-    className: {
-      type: String,
-      default: 'chart'
-    },
-    width: {
-      type: String,
-      default: '100%'
-    },
-    height: {
-      type: String,
-      default: '350px'
-    },
-    autoResize: {
-      type: Boolean,
-      default: true
-    },
-    chartData: {
-      type: Object,
-      required: true
-    }
-  },
-  data() {
-    return {
-      chart: null
-    }
-  },
-  watch: {
-    chartData: {
-      deep: true,
-      handler(val) {
-        this.setOptions(val)
-      }
-    }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.initChart()
-    })
-  },
-  beforeDestroy() {
-    if (!this.chart) {
-      return
-    }
-    this.chart.dispose()
-    this.chart = null
-  },
-  methods: {
-    initChart() {
-      this.chart = echarts.init(this.$el, 'macarons')
-      this.setOptions(this.chartData)
-    },
-    setOptions({ expectedData, actualData } = {}) {
-      this.chart.setOption({
-        xAxis: {
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-          boundaryGap: false,
-          axisTick: {
-            show: false
-          }
+    mixins: [resize],
+    props: {
+        className: {
+            type: String,
+            default: 'chart'
         },
-        grid: {
-          left: 10,
-          right: 10,
-          bottom: 20,
-          top: 30,
-          containLabel: true
+        width: {
+            type: String,
+            default: '100%'
         },
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'cross'
-          },
-          padding: [5, 10]
+        height: {
+            type: String,
+            default: '350px'
         },
-        yAxis: {
-          axisTick: {
-            show: false
-          }
+        autoResize: {
+            type: Boolean,
+            default: true
         },
-        legend: {
-          data: ['expected', 'actual']
-        },
-        series: [{
-          name: 'expected', itemStyle: {
-            normal: {
-              color: '#FF005A',
-              lineStyle: {
-                color: '#FF005A',
-                width: 2
-              }
+        chartData: {
+            type: Object,
+            required: true
+        }
+    },
+    data() {
+        return {
+            chart: null,
+            // 最近七天日期
+            recentDates: [],
+            // 最近七天销售数据【随机生成最近七天数据】
+            recentDatas: []
+        }
+    },
+    watch: {
+        chartData: {
+            deep: true,
+            handler(val) {
+                this.setOptions(val)
             }
-          },
-          smooth: true,
-          type: 'line',
-          data: expectedData,
-          animationDuration: 2800,
-          animationEasing: 'cubicInOut'
-        },
-        {
-          name: 'actual',
-          smooth: true,
-          type: 'line',
-          itemStyle: {
-            normal: {
-              color: '#3888fa',
-              lineStyle: {
-                color: '#3888fa',
-                width: 2
-              },
-              areaStyle: {
-                color: '#f3f8ff'
-              }
+        }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            this.initChart()
+        })
+        this.generateRecentDates();
+    },
+    beforeDestroy() {
+        if (!this.chart) {
+            return
+        }
+        this.chart.dispose()
+        this.chart = null
+    },
+    methods: {
+        generateRecentDates() {
+            const today = new Date();
+            const recentDates = [];
+            const recentDatas = [];
+
+            for (let i = 6; i >= 0; i--) {
+                const currentDate = new Date(today);
+                currentDate.setDate(today.getDate() - i);
+                const formattedDate = this.formatDate(currentDate);
+                recentDates.push(formattedDate);
+                recentDatas.push(Math.floor(Math.random() * 5000));
             }
-          },
-          data: actualData,
-          animationDuration: 2800,
-          animationEasing: 'quadraticOut'
-        }]
-      })
+            this.recentDates = recentDates;
+            this.recentDatas = recentDatas;
+        },
+        formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        },
+        initChart() {
+            this.chart = echarts.init(this.$el, 'macarons')
+            this.setOptions(this.chartData)
+        },
+        setOptions({ expectedData, actualData } = {}) {
+            this.chart.setOption({
+                xAxis: {
+                    data: this.recentDates,
+                    boundaryGap: false,
+                    axisTick: {
+                        show: false
+                    }
+                },
+                grid: {
+                    left: 40,
+                    right: 40,
+                    bottom: 20,
+                    top: 30,
+                    containLabel: true
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    },
+                    padding: [5, 10]
+                },
+                yAxis: {
+                    axisTick: {
+                        show: false
+                    }
+                },
+                legend: {
+                    data: ['最近7天订单总量', 'actual']
+                },
+                series: [{
+                    name: '当天订单量', itemStyle: {
+                        normal: {
+                            color: '#FF005A',
+                            lineStyle: {
+                                color: '#FF005A',
+                                width: 2
+                            }
+                        }
+                    },
+                    smooth: true,
+                    type: 'line',
+                    data: this.recentDatas,
+                    animationDuration: 2800,
+                    animationEasing: 'cubicInOut'
+                }]
+            })
+        }
     }
-  }
 }
 </script>

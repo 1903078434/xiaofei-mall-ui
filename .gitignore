@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+/xiaofei-mall-admin-ui/dist
+/xiaofei-mall-ui/dist
 
 
 # local env files

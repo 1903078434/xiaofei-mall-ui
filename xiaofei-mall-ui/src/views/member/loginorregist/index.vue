@@ -118,7 +118,7 @@ export default {
                 this.errorInfo.username = "不能包含空格"
                 verify = false;
             } else if (!this.userInfoVerify.username.test(this.userInfo.username) || this.userInfo.username.length > 11) {
-                this.errorInfo.username = "用户名长度6-11";
+                this.errorInfo.username = "用户名纯数字长度6-11";
                 verify = verify && false;
             } else {
                 this.errorInfo.username = "";
@@ -260,7 +260,7 @@ export default {
         return {
             errorInfo: {username: "", email: "", password: "", code: ""},
             loginRegisterSwitch: false,//点击登录按钮的显示方式
-            userInfo: {username: "", email: "", password: "", checkPass: "", code: ""},
+            userInfo: { username: "123456", email: "", password: "123456", checkPass: "", code: ""},
             userInfoVerify: {
                 username: /[1-9]([0-9]{5,11})/,
                 email: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/,

@@ -10,7 +10,7 @@
                     <dl>
                         <dt>用户中心</dt>
                         <dd><a @click="memberDialog = true">个人信息</a></dd>
-                        <dd><a @click="passwordDialog=true">密码修改</a></dd>
+                        <dd v-if="'123456' !== userInfo.username"><a @click="passwordDialog=true">密码修改</a></dd>
                         <dd><a>更多>></a></dd>
                     </dl>
                     <!-- 订单中心 -->
@@ -43,7 +43,7 @@
                         <div class="one">
                             <div class="img">
                                 <el-image fit="contain" lazy :src="userInfo.header"
-                                          style="width: 64px;height: 64px;border-radius: 50%"/>
+                                    style="width: 64px;height: 64px;border-radius: 50%" />
                             </div>
                             <div class="nick-name"><a>{{ userInfo.username }}</a></div>
                             <div class="user-bound">
@@ -81,11 +81,12 @@
                         <div v-if="memberDetailInfo.orderItems.length>0" class="order">
                             <!-- 订单状态选择 -->
                             <div class="order-state">
-                                <router-link :to="{path:`/order?orderStatus=0`}" style="text-decoration: none;color: #333">
+                                <router-link :to="{path:`/order?orderStatus=0`}"
+                                    style="text-decoration: none;color: #333">
                                     <div class="icon-sprite">
                                         <svg style="width: 40px;height: 40px" t="1637996812690" class="icon"
-                                             viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                             p-id="5573" width="200" height="200">
+                                            viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                            p-id="5573" width="200" height="200">
                                             <path
                                                 d="M800.362059 639.125329c-10.467399 0-18.940374 8.469905-19.016099 18.939351l0 0.038886c0 0 0 0.038886 0 0.079818 0 0 0 0 0 0.038886l0 96.378048c0 21.017686-17.019629 38.038338-38.034245 38.038338L379.591853 792.638655c-0.01842 0-0.01842 0-0.036839 0L212.86969 792.638655c-20.99722 0-38.034245-17.020652-38.034245-38.038338L174.835446 264.310781c0-21.016663 17.037025-38.033221 38.034245-38.033221l530.441001 0c21.014616 0 38.036291 17.016559 38.036291 38.033221l0 102.026698c0 0.038886 0 0.076748 0 0.076748 0 10.510378 8.505721 19.019169 19.016099 19.019169s19.017122-8.509814 19.017122-19.019169c0 0 0-0.037862 0-0.076748l0-105.830327c0-39.916105-32.349779-72.26486-72.26486-72.26486L209.065038 188.242292c-39.915082 0-72.26486 32.348756-72.26486 72.26486l0 497.896794c0 39.917128 32.348756 72.266907 72.26486 72.266907l538.050306 0c39.915082 0 72.26486-32.349779 72.26486-72.266907l0-100.340289C819.340295 647.595234 810.830481 639.125329 800.362059 639.125329z"
                                                 p-id="5574"></path>
@@ -99,11 +100,12 @@
                                     </div>
                                     <span class="name">待付款</span>
                                 </router-link>
-                                <router-link :to="{path:`/order?orderStatus=2`}" style="text-decoration: none;color: #333">
+                                <router-link :to="{path:`/order?orderStatus=2`}"
+                                    style="text-decoration: none;color: #333">
                                     <div class="icon-sprite">
                                         <svg style="width: 40px;height: 40px" t="1637997363866" class="icon"
-                                             viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                             p-id="24326" width="200" height="200">
+                                            viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                            p-id="24326" width="200" height="200">
                                             <path
                                                 d="M114.530462 449.102769l102.025846-111.025231c5.907692-6.419692 14.296615-10.102154 23.000615-10.102153h188.061539v121.127384H114.530462zM469.267692 733.932308V230.321231a31.310769 31.310769 0 0 1 31.232-31.192616h425.353846a31.310769 31.310769 0 0 1 31.232 31.192616v472.398769a31.310769 31.310769 0 0 1-31.232 31.192615H879.655385a111.497846 111.497846 0 0 0-93.538462-89.737846 113.624615 113.624615 0 0 0-16.541538-1.220923c-53.070769 0-99.879385 38.951385-109.784616 90.958769H469.267692z m-350.030769 0a31.310769 31.310769 0 0 1-31.232-31.192616V490.692923h339.633231v243.219692h-42.338462a111.497846 111.497846 0 0 0-93.538461-89.737846 113.624615 113.624615 0 0 0-16.541539-1.220923c-53.070769 0-99.879385 38.951385-109.784615 90.958769H119.217231z m650.496-49.388308a70.301538 70.301538 0 0 1 70.262154 70.183385 70.301538 70.301538 0 0 1-70.262154 70.183384 70.419692 70.419692 0 0 1-70.242461-70.183384 70.301538 70.301538 0 0 1 70.242461-70.183385z m-494.375385 0a70.301538 70.301538 0 0 1 70.242462 70.183385 70.301538 70.301538 0 0 1-70.242462 70.183384 70.419692 70.419692 0 0 1-70.262153-70.183384 70.301538 70.301538 0 0 1 70.262153-70.183385zM275.475692 866.461538c53.070769 0 99.879385-38.951385 109.784616-90.978461h274.510769a111.497846 111.497846 0 0 0 93.538461 89.757538c5.474462 0.807385 11.027692 1.220923 16.541539 1.220923 53.070769 0 99.879385-38.951385 109.784615-90.978461h46.198154a73.019077 73.019077 0 0 0 72.861539-72.763077v-472.418462A73.019077 73.019077 0 0 0 925.833846 157.538462h-425.353846a73.019077 73.019077 0 0 0-72.861538 72.782769v56.064h-188.061539a73.255385 73.255385 0 0 0-53.661538 23.552l-134.301539 146.156307-0.157538 0.236308a18.648615 18.648615 0 0 0-1.969231 2.678154l-0.295385 0.492308a20.578462 20.578462 0 0 0-1.496615 3.170461l-0.177231 0.472616c-0.393846 1.122462-0.669538 2.264615-0.846769 3.406769l-0.078769 0.472615c-0.137846 0.964923-0.196923 1.910154-0.216616 2.835693v232.861538a73.019077 73.019077 0 0 0 72.861539 72.782769h46.178461a111.497846 111.497846 0 0 0 93.538462 89.737846c5.474462 0.807385 11.027692 1.220923 16.541538 1.220923z"
                                                 p-id="24327"></path>
@@ -111,11 +113,12 @@
                                     </div>
                                     <span class="name">待收货</span>
                                 </router-link>
-                                <router-link :to="{path:`/order?orderStatus=3`}" style="text-decoration: none;color: #333">
+                                <router-link :to="{path:`/order?orderStatus=3`}"
+                                    style="text-decoration: none;color: #333">
                                     <div class="icon-sprite">
                                         <svg style="width: 40px;height: 40px" t="1637996982643" class="icon"
-                                             viewBox="0 0 1114 1024" version="1.1"
-                                             xmlns="http://www.w3.org/2000/svg" p-id="9580" width="200" height="200">
+                                            viewBox="0 0 1114 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                            p-id="9580" width="200" height="200">
                                             <path
                                                 d="M240.935578 541.984583a30.116947 30.116947 0 1 1 0-60.233894h542.105051a30.116947 30.116947 0 1 1 0 60.233894H240.935578z m0-210.788514a30.116947 30.116947 0 1 1 0-60.233894h662.57284a30.116947 30.116947 0 1 1 0 60.233894H240.935578z m214.402548 518.131961a30.116947 30.116947 0 0 1 21.232448-8.733914H1054.093155V60.233895H60.233895v780.330104h169.136776a30.116947 30.116947 0 0 1 21.322798 8.824265l101.975984 101.945867 102.668673-102.006101z m-81.496459 165.884146A30.116947 30.116947 0 0 1 331.28642 1015.151942L216.902254 900.797893H60.233895a60.233895 60.233895 0 0 1-60.233895-60.233894V60.233895a60.233895 60.233895 0 0 1 60.233895-60.233895h993.85926a60.233895 60.233895 0 0 1 60.233894 60.233895v780.330104a60.233895 60.233895 0 0 1-60.233894 60.233894H488.978756l-115.137089 114.4444z"
                                                 fill="#7F7F7F" p-id="9581"></path>
@@ -123,11 +126,12 @@
                                     </div>
                                     <span class="name">待评价</span>
                                 </router-link>
-                                <router-link :to="{path:`/order?orderStatus=3`}" style="text-decoration: none;color: #333">
+                                <router-link :to="{path:`/order?orderStatus=3`}"
+                                    style="text-decoration: none;color: #333">
                                     <div class="icon-sprite">
                                         <svg style="width: 40px;height: 40px" t="1637997151123" class="icon"
-                                             viewBox="0 0 1024 1024" version="1.1"
-                                             xmlns="http://www.w3.org/2000/svg" p-id="12295" width="200" height="200">
+                                            viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                            p-id="12295" width="200" height="200">
                                             <path
                                                 d="M844.8 617.5744v-234.1632c0-34.0992-18.176-68.224-47.744-86.4l-225.0752-134.144a102.7328 102.7328 0 0 0-102.3232 0l-227.328 136.4224C212.736 317.44 194.56 349.312 194.56 383.4112v275.0976c0 34.0992 18.176 68.1984 47.744 86.4l225.0752 134.144a105.6256 105.6256 0 0 0 52.3008 13.6192c18.176 0 36.3776-4.5312 52.3008-13.6192l227.328-134.144c4.5568-2.304 9.1136-9.1136 9.1136-15.9232a17.92 17.92 0 0 0-18.176-18.176c-4.5568 0-6.8352 2.2528-9.1136 2.2528l-227.328 134.144c-20.48 11.3664-45.4912 11.3664-65.9456 0l-225.1008-134.144a63.9744 63.9744 0 0 1-29.5424-54.5536V383.4112c0-22.7584 11.3664-43.2128 29.5424-54.5792l225.1008-134.144a67.9936 67.9936 0 0 1 65.92 0l222.8224 136.4224a63.9744 63.9744 0 0 1 29.5424 54.5792v234.1632a17.92 17.92 0 0 0 18.176 18.176c11.392-2.2528 20.48-9.088 20.48-20.4544z"
                                                 fill="#333333" p-id="12296"></path>
@@ -141,11 +145,12 @@
                                     </div>
                                     <span class="name">退换/售后</span>
                                 </router-link>
-                                <router-link :to="{path:`/order?orderStatus=-1`}" style="text-decoration: none;color: #333">
+                                <router-link :to="{path:`/order?orderStatus=-1`}"
+                                    style="text-decoration: none;color: #333">
                                     <div class="icon-sprite">
                                         <svg style="width: 40px;height: 40px" t="1637997240699" class="icon"
-                                             viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                             p-id="22061" width="200" height="200">
+                                            viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                            p-id="22061" width="200" height="200">
                                             <path
                                                 d="M321.11809 65.612347 257.085728 129.009236 638.078998 512.615007 253.882779 892.992247 317.372789 956.917162 765.594207 513.137916Z"
                                                 p-id="22062" fill="#a6a6a6"></path>
@@ -159,9 +164,8 @@
                             <div class="order-item">
                                 <ul class="xiaofei-clear-vertical-ul">
                                     <li v-for="order in memberDetailInfo.orderItems" :key="order.id">
-                                        <router-link style="text-decoration: none;"
-                                                     :to="{path:`/item/${order.skuId}`}">
-                                            <el-image style="width: 60px;height: 60px" alt="" :src="order.skuPic"/>
+                                        <router-link style="text-decoration: none;" :to="{path:`/item/${order.skuId}`}">
+                                            <el-image style="width: 60px;height: 60px" alt="" :src="order.skuPic" />
                                         </router-link>
                                         <div class="state">
                                             <div class="text" :title="order.skuName">
@@ -213,18 +217,18 @@
         <!-- 修改密码弹窗 -->
         <el-dialog v-bind="$attrs" v-on="$listeners" :visible="passwordDialog" title="修改密码" :show-close="false">
             <el-form ref="passwordForm" :model="passwordFormData" :memberInfoRules="passwordRules" size="medium"
-                     label-width="100px">
+                label-width="100px">
                 <el-form-item label="旧密码" prop="oldPassword">
                     <el-input v-model="passwordFormData.oldPassword" placeholder="请输入旧密码" clearable show-password
-                              :style="{width: '100%'}"></el-input>
+                        :style="{width: '100%'}"></el-input>
                 </el-form-item>
                 <el-form-item label="新密码" prop="password">
                     <el-input v-model="passwordFormData.password" placeholder="请输入新密码" clearable show-password
-                              :style="{width: '100%'}"></el-input>
+                        :style="{width: '100%'}"></el-input>
                 </el-form-item>
                 <el-form-item label="确认密码" prop="password1">
                     <el-input v-model="passwordFormData.password1" placeholder="请输入确认密码" clearable show-password
-                              :style="{width: '100%'}"></el-input>
+                        :style="{width: '100%'}"></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer">
@@ -235,39 +239,39 @@
 
         <!-- 修改用户信息对话框 -->
         <el-dialog v-bind="$attrs" v-on="$listeners" @open="memberDialogOpen" :visible="memberDialog" title="修改信息"
-                   :show-close="false">
+            :show-close="false">
             <el-form ref="memberInfoForm" :model="memberInfoFormData" :rules="memberInfoRules" size="medium"
-                     label-width="100px">
+                label-width="100px">
                 <el-form-item label="头像" prop="logo">
                     <single-upload v-model="memberInfoFormData.header"></single-upload>
                 </el-form-item>
                 <el-form-item label="昵称" prop="nickname">
                     <el-input v-model="memberInfoFormData.nickname" placeholder="请输入昵称昵称昵称" clearable
-                              :style="{width: '100%'}">
+                        :style="{width: '100%'}">
                     </el-input>
                 </el-form-item>
                 <el-form-item label="手机号码" prop="mobile">
                     <el-input v-model="memberInfoFormData.mobile" placeholder="请输入手机号码" clearable
-                              :style="{width: '100%'}"></el-input>
+                        :style="{width: '100%'}"></el-input>
                 </el-form-item>
                 <el-form-item label="性别" prop="gender">
                     <el-radio-group v-model="memberInfoFormData.gender" size="medium">
                         <el-radio v-for="(item, index) in genderOptions" :key="index" :label="item.value"
-                                  :disabled="item.disabled">{{ item.label }}
+                            :disabled="item.disabled">{{ item.label }}
                         </el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="生日" prop="birth">
                     <el-date-picker v-model="memberInfoFormData.birth" format="yyyy-MM-dd" value-format="yyyy-MM-dd"
-                                    :style="{width: '100%'}" placeholder="请选择生日" clearable></el-date-picker>
+                        :style="{width: '100%'}" placeholder="请选择生日" clearable></el-date-picker>
                 </el-form-item>
                 <el-form-item label="职业" prop="job">
                     <el-input v-model="memberInfoFormData.job" placeholder="请输入职业" clearable
-                              :style="{width: '100%'}"></el-input>
+                        :style="{width: '100%'}"></el-input>
                 </el-form-item>
                 <el-form-item label="个性签名" prop="sign">
                     <el-input v-model="memberInfoFormData.sign" placeholder="请输入个性签名" clearable
-                              :style="{width: '100%'}">
+                        :style="{width: '100%'}">
                     </el-input>
                 </el-form-item>
             </el-form>

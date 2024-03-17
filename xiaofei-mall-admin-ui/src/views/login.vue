@@ -68,8 +68,8 @@ export default {
       codeUrl: "",
       cookiePassword: "",
       loginForm: {
-        username: "admin",
-        password: "admin123",
+        username: "mall_test",
+        password: "mall_test",
         rememberMe: false,
         code: "",
         uuid: ""
@@ -87,7 +87,7 @@ export default {
       // 验证码开关
       captchaOnOff: true,
       // 注册开关
-      register: true,
+      register: false,
       redirect: undefined
     };
   },
